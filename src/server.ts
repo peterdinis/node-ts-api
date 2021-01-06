@@ -9,6 +9,6 @@ const app: Application = express();
 
 app.use(morgan('tiny'));
 app.use(helmet());
-app.use(authRoutes);
+app.use('/api/auth/', authRoutes);
 
 app.listen(5600, () => console.log(chalk.blue.inverse("Applikácia beží na porte 5600")))

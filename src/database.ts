@@ -6,7 +6,7 @@ mongoose.connect('mongodb+srv://peter:aaaaaa1@cluster0.59piy.mongodb.net/NodeTsA
     useUnifiedTopology: true,
     useCreateIndex: true
 }).then(db => {
-    console.log(chalk.green.inverse('Connected to db: '));
+    console.log(chalk.green.inverse('Connected to db'));
 }).catch(err =>{
     console.log(chalk.red.inverse('Err: ' + err));
 });
