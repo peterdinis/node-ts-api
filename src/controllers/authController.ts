@@ -1,4 +1,5 @@
 import {Request, Response} from 'express';
+import User from '../models/User';
 
 export const getSignup = async(req: Request, res: Response) => {
     res.send('Get Signup Route');
