@@ -1,13 +1,14 @@
 import {Request, Response} from 'express';
 import User from '../models/User';
 import {InterfaceUser} from '../interfaces/UserInterface';
+import jwt from 'jsonwebtoken';
 
 export const getSignup = async(req: Request, res: Response) => {
     res.send('Get Signup Route');
 }
 
 export const getSignin = async(req: Request, res: Response) => {
-    res.send('Get Signin Route')
+    res.send('Get Signin Route');
 }
 
 export const getProfile = async(req: Request, res: Response) => {
@@ -22,8 +23,12 @@ export const postSignup = async(req: Request, res: Response) => {
     });
     const savedUser = await user.save();
 
+    // jwt token
+    const token: string = jwt.sign({_id: savedUser._id}, process.env.JWT_SECRET || 'tokentester');
+
     return res.json({
-        message: 'User successfully signup', savedUser
+        message: 'User successfully signup', savedUser,
+        token
     })
 }
 
